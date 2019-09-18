@@ -1,0 +1,181 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title MediLab</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="page-wrap">
+
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="row">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">
+                            <img src="~/Images/h.png" style="height: 55px;width: 55px; margin-top:-16px" />
+                        </a>
+                        @Html.ActionLink("MediLab", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div class="navbar-collapse collapse ">
+                        <ul class="nav navbar-nav " style="margin-left:70px">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            @if (User.IsInRole("Doctor") || User.IsInRole("Patient"))
+                            {
+                                <li>@Html.ActionLink("My profile", "Details", "Home")</li>
+                            }
+                            @if (User.IsInRole("Administrator") || User.IsInRole("Doctor"))
+                            {
+                                <li>@Html.ActionLink("Patients", "Index", "Patients")</li>
+                            }
+                            <li>@Html.ActionLink("Doctors", "Index", "Doctors")</li>
+                            @if (User.IsInRole("Doctor") || User.IsInRole("Patient") || User.IsInRole("Administrator"))
+                            {
+                            <li>@Html.ActionLink("Appointments", "Index", "Appointments")</li>
+                            }
+                                
+
+
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <li>  @Html.ActionLink("Drugs", "Index", "Drugs") </li>
+
+
+                                <li>@Html.ActionLink("Assign Roles", "AddUserToRole", "Account")</li>
+                            }
+                        </ul>
+
+                        <ul class=" nav navbar-nav navbar-right">
+
+                            @if (Request.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+
+                                    <li class="dropdown navbar-right" style="padding-top:15px">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="glyphicon glyphicon-user"></i>
+                                            @User.Identity.GetUserName()
+
+
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+
+
+                                            @if (User.IsInRole("Doctor") || User.IsInRole("Patient"))
+                                            {
+
+
+
+                                                <li>
+                                                    <a href="Home/Details">
+                                                        <i class="glyphicon glyphicon-user"></i>
+
+                                                        My profile
+                                                    </a>
+
+                                                </li>
+                                            }
+
+                                            <li class="divider"></li>
+
+
+                                            <li>
+                                                <a href="javascript:document.getElementById('logoutForm').submit()">
+                                                    <i class="glyphicon glyphicon-log-out"></i>
+
+                                                    Log off
+                                                </a>
+                                            </li>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                                </ul>
+                            }
+
+                        </ul>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+
+
+
+        </div>
+    </div>
+
+
+    <div class=" footer navbar-bottom panel-footer">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="text-center">Copyright &copy; MediLab @DateTime.Now.Year </p>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/fontawesome")
+
+    @RenderSection("scripts", required: false)
+</body>
+
+
+
+
+
+</html>
+
+<style>
+
+
+    * {
+        margin: 0;
+    }
+
+    html, body {
+        height: 100%;
+    }
+
+    .page-wrap {
+        min-height: 100%;
+        /* equal to footer height */
+        margin-bottom: -5px;
+    }
+
+        .page-wrap:after {
+            content: "";
+            display: block;
+        }
+
+        footer, .page-wrap:after {
+            height: 10px;
+        }
+
+
+    
+</style>

@@ -1,0 +1,172 @@
+﻿@model Hospital.Models.Patient
+
+@{
+    ViewBag.Title = "Edit";
+}
+<body style="background-image:url(../../Images/hospital3.jpg); background-repeat:repeat; background-size: cover;background-position: center;">
+
+    <br />
+    <h2>Change informations about Doctor</h2>
+    <br />
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal" style="margin-left:28%">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.NameSurName, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4><div class="col-md-10">
+                    @Html.EditorFor(model => model.NameSurName, new { htmlAttributes = new { @class = "custom" } })
+                    @Html.ValidationMessageFor(model => model.NameSurName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4><div class="col-md-10">
+                    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "custom", @type = "number" } })
+                    @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4><div class="col-md-10">
+                    <div class="col-md-10">
+                        <p style="font-size:16px">
+                            @Html.RadioButtonFor(model => model.Gender, "Male", new { @style = "width:20px;height:20px" })
+                            Male &nbsp; &nbsp;
+                            @Html.RadioButtonFor(model => model.Gender, "Female", new { @style = "width:20px;height:20px" })
+                            Female
+                        </p>
+                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4><div class="col-md-10">
+                    @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "custom" } })
+                    @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "custom" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4><div class="col-md-10">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "custom" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4><div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "custom" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.BloodType, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.BloodType, new SelectList(ViewBag.bloodtypes), new { @class = "custom" })
+                    @Html.ValidationMessageFor(model => model.BloodType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.Allergies, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Allergies, new { htmlAttributes = new { @class = "textarea", @rows = 5 } })
+                    @Html.ValidationMessageFor(model => model.Allergies, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.HistoryOfDiseases, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HistoryOfDiseases, new { htmlAttributes = new { @class = "textarea", @rows = 5 } })
+                    @Html.ValidationMessageFor(model => model.HistoryOfDiseases, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default btn-lg" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        <button class="btn btn-default btn-lg">
+            @Html.ActionLink("Back to Patients", "Index", new { @style = "text-decoration:none" }, new { @style = "text-decoration:none;color:#1C2833" })
+        </button>
+
+    </div>
+    <br />
+    <br />
+</body>
+<style>
+    .custom {
+        width: 100%;
+        border-radius: 4px;
+        padding: 7px 7px;
+        margin: 6px 0;
+        box-sizing: border-box;
+    }
+
+        .custom:hover {
+            border: 2px solid #b5adb8;
+        }
+
+    .textarea {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        resize: none;
+    }
+
+        .textarea:hover {
+            border: 2px solid #b5adb8;
+        }
+</style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

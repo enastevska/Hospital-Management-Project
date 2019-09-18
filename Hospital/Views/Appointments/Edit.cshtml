@@ -1,0 +1,119 @@
+﻿@model Hospital.Models.Appointment
+
+@{
+    ViewBag.Title = "Edit";
+}
+<body style="background-image:url(../../Images/hospital3.jpg); background-repeat:no-repeat; background-size: cover;background-position: center;">
+    <br />
+    <h2>Change the appointment</h2>
+    <br />
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal" style="margin-left:28%">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Date)
+            @Html.HiddenFor(model => model.PatientId)
+            @Html.HiddenFor(model => model.DoctorId)
+            @Html.HiddenFor(model => model.FromTime)
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4>
+                    <div class="col-md-10">
+                   <h4>     @ViewBag.Date </h4>
+               
+            </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.PatientId, "Patient", htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4>
+                    <div class="col-md-10">
+                <h4>    @ViewBag.PatientName  </h4>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.DoctorId, "Doctor", htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4>
+                    <div class="col-md-10">
+                <h4>    @ViewBag.DoctorName</h4>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                @Html.LabelFor(model => model.FromTime, htmlAttributes: new { @class = "control-label col-md-2 " })
+                
+                    </h4><div class="col-md-10">
+                 <h4>   @ViewBag.FromTime</h4>
+                </div>
+            </div>
+
+
+            @if (!User.IsInRole("Patient"))
+            {
+                <div class="form-group">
+                    <h4>
+                    @Html.LabelFor(model => model.HasOccured, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4>    <div class="col-md-10">
+                        <div class="checkbox big-checkbox" >
+                            @Html.EditorFor(model => model.HasOccured)
+                            @Html.ValidationMessageFor(model => model.HasOccured, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Change appointment" class="btn btn-default btn-lg" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+
+        <button class="btn btn-default btn-lg">
+            @Html.ActionLink("Back to Appointments", "Index", new { @style = "text-decoration:none;color:black" }, new { @style = "text-decoration:none;color:black" })
+        </button>
+
+
+
+    </div>
+</body>
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.1/jquery.timepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.1/jquery.timepicker.min.css" type="text/css" />
+
+    <script type="text/javascript">
+        $(".timepicker").timepicker({
+            format: 'hh:i'
+        });
+    </script>
+
+}
+
+
+<style>
+
+  
+    .big-checkbox {
+        width: 30px;
+        height: 30px;
+    }
+</style>

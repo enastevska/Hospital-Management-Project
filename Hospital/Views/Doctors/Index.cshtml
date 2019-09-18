@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Hospital.Models.Doctor>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Our Specialists</h2>
+
+<hr />
+
+
+<p>
+    @if (User.IsInRole("Administrator"))
+    {
+    <div style="padding: 5px 5px;float:right">
+        <a href="/Doctors/Create"  style="font-size:20px; font-family:'Californian FB'; text-decoration:none">
+            <img src="~/Images/plus.png" width="40" height="40" />
+            Add doctor
+        </a>
+    </div>
+    }
+</p>
+
+
+@{
+    int count = 0;
+}
+
+@foreach (var item in Model)
+{
+
+    if (count % 3 == 0)
+    {
+        <div class="row">
+
+        </div>
+    }
+
+
+    <div class="col-md-4 text-center">
+        <div class="thumbnail" id="thumbnail">
+            <a href="/Doctors/Details/@item.Id"> <img class="img-responsive" src="@item.ImageUrl" style="height:230px;width:350px" alt=""></a>
+            <div class="caption">
+                <h3>
+                    @item.NameSurName<br>
+                    <small>@item.Specialty</small>
+                </h3>
+                <p>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
+                        <span> &nbsp;</span>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+                    }
+
+                    @if (User.IsInRole("Patient"))
+                    {
+                        <button class="btn" style="text-decoration:none;">   @Html.ActionLink("Schedule an appointment", "Create", "Appointments", new { id = item.Id}, new { id = item.Id, @style = "text-decoration:none" }) </button>
+                    }
+                </p>                            <ul class="list-inline">
+                    <li>
+                        <a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-2x fa-twitter-square"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    count++;
+}
+
+
+
+
+
+
+<style>
+
+    button {
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+    }
+
+        button:hover {
+            background-color: white; /* Green */
+            color: lightskyblue;
+        }
+</style>
+
+
+
+
+

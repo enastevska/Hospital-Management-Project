@@ -1,0 +1,54 @@
+﻿@model Hospital.Models.AddToRole
+@{
+    /**/
+
+    ViewBag.Title = "AddUserToRole";
+}
+<body style="background-image:url(../../Images/hospital3.jpg); background-repeat:no-repeat; background-size: cover;background-position: center;">
+    <br />
+    <h2>Assign role to the user</h2>
+    <br />
+    <br />
+    @using (Html.BeginForm("AddUserToRole", "Account"))
+    {
+
+        <div class="form-group" style="margin-left:28%">
+
+            <p style="font-size:20px">
+                @Html.LabelFor(m => m.Email) &nbsp;&nbsp;&nbsp;
+                @Html.TextBoxFor(m => m.Email, new { @class = "custom" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+            </p>
+
+
+
+        </div>
+
+        <div class="form-group" style="margin-left:28%">
+            <p style="font-size:20px">
+                <b>Roles</b> &nbsp;&nbsp;&nbsp;
+                @Html.DropDownListFor(m => m.selectedRole, new SelectList(Model.roles), new { @class = "custom" })
+            </p>
+
+
+        </div>
+        <button class="btn btn-default btn-lg" type="submit" style="margin-left:28%">Submit</button>
+    }
+    <br />
+    <br />
+</body>
+<style>
+    .custom {
+        width: 100%;
+        border-radius: 4px;
+        padding: 7px 7px;
+        margin: 6px 0;
+        box-sizing: border-box;
+    }
+
+        .custom:hover {
+            border: 2px solid #b5adb8;
+        }
+</style>
+

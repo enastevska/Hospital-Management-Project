@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Hospital.Models.Therapy>
+
+@{
+    ViewBag.Title = "Index";
+}
+<body style="background-image:url(../../Images/kk.jpg); background-repeat:no-repeat; background-size: cover;background-position: center;">
+
+    <br />
+    <br />
+
+   
+
+    <table class="table table-bordered" id="therapies">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("Patient name")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateFrom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateTo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Diagnose)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Patient.NameSurName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateFrom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateTo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Diagnose)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        <span>&nbsp; &nbsp;</span>
+
+                        @if (User.IsInRole("Doctor"))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                            <span>&nbsp; &nbsp;</span>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <br />
+</body>
+<br />
+<br />
+
+<style>
+
+    .table-striped > tbody > tr:nth-child(odd) > td,
+    .table-striped > tbody > tr:nth-child(odd) > th {
+        background-color: #D5D8DC;
+    }
+
+    .table-striped > tbody > tr:nth-child(even) > td,
+    .table-striped > tbody > tr:nth-child(even) > th {
+        background-color: white;
+    }
+</style>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#therapies").DataTable();
+
+        });
+
+    </script>
+
+
+}

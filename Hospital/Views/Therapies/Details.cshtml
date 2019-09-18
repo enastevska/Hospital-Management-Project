@@ -1,0 +1,84 @@
+﻿@model Hospital.Models.Therapy
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<body style="background-image:url(../../Images/kk.jpg); background-repeat:no-repeat; background-size: cover;background-position: center;">
+    <br />
+    <h2>More info about the therapy</h2>
+    <br />
+    <br />
+    <div>
+
+        <dl class="dl-horizontal" style="margin-left:28%">
+            <dt>
+                @Html.DisplayNameFor(model => model.Patient.NameSurName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Patient.NameSurName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateFrom)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateFrom)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateTo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateTo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Diagnose)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Diagnose)
+            </dd>
+            <dt>
+                Drug
+            </dt>
+
+            <dd>
+                <a href="/Drugs/Details/@ViewBag.drugId">@ViewBag.drug</a>
+            </dd>
+
+
+
+        </dl>
+    </div>
+    <p>
+        @if (User.IsInRole("Doctor"))
+        {
+
+            <button class="btn btn-default btn-md">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id, @style = "text-decoration:none;color:black" }, new { @style = "text-decoration:none;color:black" })
+            </button>
+           
+        }
+        <button class="btn btn-default btn-md">
+            @Html.ActionLink("Back to Therapies", "Index",  new { id = Model.PatientId }, new { @style = "text-decoration:none;color:black" })
+        </button>
+    </p>
+
+    </body>
+
+
+<style>
+
+    dt {
+        font-size: 20px
+    }
+
+    dd {
+        font-size: 25px
+    }
+</style>

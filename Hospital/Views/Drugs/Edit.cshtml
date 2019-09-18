@@ -1,0 +1,102 @@
+﻿@model Hospital.Models.Drug
+
+@{
+    ViewBag.Title = "Edit";
+}
+<body style="background-image:url(../../Images/aspirina.jpg); background-repeat:no-repeat; background-size: cover;background-position: center;">
+
+    <br />
+    <h2>Change informations about Drug</h2>
+    <br />
+    <br />
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal" style="margin-left:28%">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4><div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "custom" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.GenericName, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4><div class="col-md-10">
+                    @Html.EditorFor(model => model.GenericName, new { htmlAttributes = new { @class = "custom" } })
+                    @Html.ValidationMessageFor(model => model.GenericName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.Producer, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4><div class="col-md-10">
+                    @Html.EditorFor(model => model.Producer, new { htmlAttributes = new { @class = "custom" } })
+                    @Html.ValidationMessageFor(model => model.Producer, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.Usage, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4> <div class="col-md-10">
+                    @Html.EditorFor(model => model.Usage, new { htmlAttributes = new { @class = "custom" } })
+                    @Html.ValidationMessageFor(model => model.Usage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>
+                    @Html.LabelFor(model => model.Indications, htmlAttributes: new { @class = "control-label col-md-2" })
+                </h4><div class="col-md-10">
+                    @Html.EditorFor(model => model.Indications, new { htmlAttributes = new { @class = "custom" } })
+                    @Html.ValidationMessageFor(model => model.Indications, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default btn-lg" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        <button class="btn btn-default btn-lg">
+            @Html.ActionLink("Back to Drugs", "Index", new { @style = "text-decoration:none" }, new { @style = "text-decoration:none;color:#1C2833" })
+        </button>
+
+    </div>
+    <br />
+    <br />
+</body>
+<style>
+    .custom {
+        width: 100%;
+        border-radius: 4px;
+        padding: 7px 7px;
+        margin: 6px 0;
+        box-sizing: border-box;
+    }
+
+        .custom:hover {
+            border: 2px solid #b5adb8;
+        }
+</style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

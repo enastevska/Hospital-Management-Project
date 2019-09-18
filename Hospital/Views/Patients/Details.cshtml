@@ -1,0 +1,135 @@
+﻿@model Hospital.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+}
+<body style="background-image:url(../../Images/patients.jpg); background-repeat:no-repeat; background-size: cover;background-position: center;" >
+
+    <br />
+    <br />
+
+    <div style="background-color:transparent">
+
+
+        <br />
+        <div class="row">
+
+
+            <div class="col-lg-10">
+
+                <h2 style="margin-left:45%"><b>@Html.DisplayFor(model => model.NameSurName)</b></h2>
+
+                <div class="col-lg-3 col-lg-offset-3">
+                    <br />
+                    <h4>
+                        <i class="glyphicon glyphicon-user"> </i>   <b>@Html.DisplayNameFor(model => model.Age)</b></i>
+                    </h4>
+
+
+                    <h4>
+                        @Html.DisplayFor(model => model.Age)
+                    </h4>
+                    </br>
+
+
+
+                    <h4>
+                        <b>
+                            <i class="glyphicon glyphicon-time">       </i>      @Html.DisplayNameFor(model => model.DateOfBirth)
+                        </b>
+                    </h4>
+
+                    <h4>
+                        @Html.DisplayFor(model => model.DateOfBirth)
+                    </h4>
+                    <br />
+                    <h4>
+                        <i class="fa fa-transgender">  </i>          <b>@Html.DisplayNameFor(model => model.Gender) </ b >
+                    </h4>
+
+                    <h4>
+                        @Html.DisplayFor(model => model.Gender)
+                    </h4>
+                    <br />
+
+                    <h4>
+                        <i class="glyphicon glyphicon-phone">  </i>       <b>@Html.DisplayNameFor(model => model.PhoneNumber)</b>
+                    </h4>
+
+                    <h4>
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </h4>
+                    </br>
+                    <h4>
+                        <i class="glyphicon glyphicon-envelope"> </i>      <b>@Html.DisplayNameFor(model => model.Email)</b>
+                    </h4>
+
+
+                    <h4>
+                        @Html.DisplayFor(model => model.Email)
+                    </h4>
+                </div>
+                <div class="col-lg-3 col-lg-offset-3">
+                    <br />
+                    <h4>
+                        <i class="fa fa-ambulance"> </i>         <b>@Html.DisplayNameFor(model => model.Allergies)</b>
+                    </h4>
+
+                    <h4>
+                        @Html.DisplayFor(model => model.Allergies)
+                    </h4>
+                    </br>
+                    <h4>
+                        <i class="glyphicon glyphicon-tint"> </i>       <b> @Html.DisplayNameFor(model => model.BloodType)</b>
+                    </h4>
+
+                    <h4>
+                        @Html.DisplayFor(model => model.BloodType)
+                    </h4>
+
+                    <br />
+                    <h4>
+                        <i class="glyphicon glyphicon-th-list"> </i>    <b>@Html.DisplayNameFor(model => model.HistoryOfDiseases)</b>
+                    </h4>
+
+
+                    <h4>
+                        @Html.DisplayFor(model => model.HistoryOfDiseases)
+                    </h4>
+                    <br />
+
+
+                    <h4>
+                        <button class="btn btn-default btn-lg">
+                            @Html.ActionLink("Therapies", "Index", "Therapies", new { id = Model.Id}, new { id = Model.Id, @style = "text-decoration:none" })
+                        </button>
+                    </h4>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+        <br />
+        <br />
+        <p style="margin-left:800px;margin-top:-20px">
+            @if (User.IsInRole("Administrator"))
+            {
+                <button class="btn btn-default btn-md">
+                    @Html.ActionLink("Edit info about this patient", "Edit", new { id = Model.Id, @style = "text-decoration:none" }, new { id = Model.Id, @style = "text-decoration:none" })
+                </button>
+            }
+            @if (!User.IsInRole("Patient"))
+            {
+                <button class="btn btn-default btn-md">
+                    @Html.ActionLink("Back to Patients", "Index", new { id = Model.Id, @style = "text-decoration:none" }, new { id = Model.Id, @style = "text-decoration:none" })
+                </button>
+            }
+        </p>
+    </div>
+
+
+    </body>

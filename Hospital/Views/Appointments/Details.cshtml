@@ -1,0 +1,81 @@
+﻿@model Hospital.Models.Appointment
+
+@{
+    ViewBag.Title = "Details";
+}
+<body style="background-image:url(../../Images/hospital3.jpg); background-repeat:no-repeat; background-size: cover;background-position: center;">
+    <br />
+    <h2>More info about the appointment</h2>
+    <br/>
+    <br/>
+    <div>
+
+        <dl class="dl-horizontal" style="margin-left:28%">
+            <dt>
+                @Html.DisplayName("Doctor")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Doctor.NameSurName)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Patient")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Patient.NameSurName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FromTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FromTime)
+            </dd>
+
+           @if (!User.IsInRole("Patient"))
+           {
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HasOccured)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HasOccured)
+            </dd>
+           }
+
+        </dl>
+    </div>
+    <p>
+
+
+        <button class="btn btn-default btn-lg">
+            @Html.ActionLink("Back to Appointments", "Index", null, new { @style = "text-decoration:none;color:black" })
+        </button>
+    </p>
+
+
+</body>
+
+
+<style>
+
+    dt {
+        font-size: 20px
+    }
+
+    dd {
+        font-size: 25px
+    }
+</style>

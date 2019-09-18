@@ -1,0 +1,50 @@
+﻿@model Hospital.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<body style="background-image:url(../../Images/lo.jpg); background-repeat:no-repeat; background-size: cover;background-position: center;">
+    <br />
+    <br />
+    <img src="~/Images/login.png" style="margin-left:43%" width="70" height="70" />
+    <h2 style="margin-left:42%">@ViewBag.Title</h2>
+    <div class="row">
+        <div class="col-md-8">
+            <section id="loginForm" style="margin-left:40%" class="glyphicon-log-in">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <hr />
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn btn-default" style="margin-left:27%" value="Register" />
+                        </div>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
