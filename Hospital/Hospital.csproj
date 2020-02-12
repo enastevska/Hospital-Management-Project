@@ -414,9 +414,9 @@
     <Compile Include="Migrations\201906221451220_nova2.Designer.cs">
       <DependentUpon>201906221451220_nova2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906221457201_nova3.cs" />
-    <Compile Include="Migrations\201906221457201_nova3.Designer.cs">
-      <DependentUpon>201906221457201_nova3.cs</DependentUpon>
+    <Compile Include="Migrations\202002121715511_changedRegex.cs" />
+    <Compile Include="Migrations\202002121715511_changedRegex.Designer.cs">
+      <DependentUpon>202002121715511_changedRegex.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -893,8 +893,8 @@
     <EmbeddedResource Include="Migrations\201906221451220_nova2.resx">
       <DependentUpon>201906221451220_nova2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906221457201_nova3.resx">
-      <DependentUpon>201906221457201_nova3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002121715511_changedRegex.resx">
+      <DependentUpon>202002121715511_changedRegex.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

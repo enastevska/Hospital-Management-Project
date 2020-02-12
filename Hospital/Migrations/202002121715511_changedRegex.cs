@@ -3,7 +3,7 @@ namespace Hospital.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class nova3 : DbMigration
+    public partial class changedRegex : DbMigration
     {
         public override void Up()
         {

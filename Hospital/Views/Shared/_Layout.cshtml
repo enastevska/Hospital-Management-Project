@@ -7,11 +7,9 @@
     <title>@ViewBag.Title MediLab</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="page-wrap">
-
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="row">
                 <div class="container">
@@ -31,10 +29,7 @@
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                            @if (User.IsInRole("Doctor") || User.IsInRole("Patient"))
-                            {
-                                <li>@Html.ActionLink("My profile", "Details", "Home")</li>
-                            }
+
                             @if (User.IsInRole("Administrator") || User.IsInRole("Doctor"))
                             {
                                 <li>@Html.ActionLink("Patients", "Index", "Patients")</li>
@@ -42,22 +37,18 @@
                             <li>@Html.ActionLink("Doctors", "Index", "Doctors")</li>
                             @if (User.IsInRole("Doctor") || User.IsInRole("Patient") || User.IsInRole("Administrator"))
                             {
-                            <li>@Html.ActionLink("Appointments", "Index", "Appointments")</li>
+                                <li>@Html.ActionLink("Appointments", "Index", "Appointments")</li>
                             }
-                                
 
 
                             @if (User.IsInRole("Administrator"))
                             {
                                 <li>  @Html.ActionLink("Drugs", "Index", "Drugs") </li>
 
-
                                 <li>@Html.ActionLink("Assign Roles", "AddUserToRole", "Account")</li>
                             }
                         </ul>
-
                         <ul class=" nav navbar-nav navbar-right">
-
                             @if (Request.IsAuthenticated)
                             {
                                 using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -70,34 +61,25 @@
                                             <i class="glyphicon glyphicon-user"></i>
                                             @User.Identity.GetUserName()
 
-
                                             <b class="caret"></b>
                                         </a>
                                         <ul class="dropdown-menu">
 
-
                                             @if (User.IsInRole("Doctor") || User.IsInRole("Patient"))
                                             {
 
-
-
                                                 <li>
-                                                    <a href="Home/Details">
+                                                    <a href="/Home/Details">
                                                         <i class="glyphicon glyphicon-user"></i>
-
                                                         My profile
                                                     </a>
-
                                                 </li>
                                             }
-
                                             <li class="divider"></li>
-
 
                                             <li>
                                                 <a href="javascript:document.getElementById('logoutForm').submit()">
                                                     <i class="glyphicon glyphicon-log-out"></i>
-
                                                     Log off
                                                 </a>
                                             </li>
@@ -111,10 +93,7 @@
                                     <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
                                 </ul>
                             }
-
                         </ul>
-
-
 
                     </div>
                 </div>
@@ -123,11 +102,8 @@
         <div class="container body-content">
             @RenderBody()
 
-
-
         </div>
     </div>
-
 
     <div class=" footer navbar-bottom panel-footer">
         <div class="row">
@@ -136,21 +112,16 @@
             </div>
         </div>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Styles.Render("~/Content/fontawesome")
-
     @RenderSection("scripts", required: false)
 </body>
 
 
-
-
-
 </html>
-
 <style>
+
 
 
     * {
@@ -175,7 +146,4 @@
         footer, .page-wrap:after {
             height: 10px;
         }
-
-
-    
 </style>

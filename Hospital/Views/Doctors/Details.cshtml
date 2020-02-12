@@ -1,151 +1,116 @@
 ﻿@model Hospital.Models.Doctor
 
-
 <div>
-    
-    
     <br />
-       <div class="row">
-           <div class="col-lg-6" style="margin-top:20px">
-               <img src="@Model.ImageUrl" alt="Image of the doctor" width="550" height="400" />
-               <br />
-               <br />
-               @if (User.IsInRole("Patient"))
-               {
-                   <button class="btn" style="text-decoration:none;margin-left:28%">   @Html.ActionLink("Schedule an appointment", "Create", "Appointments", new { id = Model.Id }, new { id = Model.Id, @style = "text-decoration:none" }) </button>
-               }
-               <br />
-               <br />
-             
-                   <div class="panel panel-default">
-                       <div class="panel-heading">
-                           <div class="row">
-                               <div class="col-lg-12">
-                                   <div class="panel-icon"><span class="glyphicon glyphicon-time">  Opening Hours</span></div>
-                               </div>
-                               
+    <br />
+    <div class="row">
+        <div class="col-lg-6" style="margin-top:20px">
+            <img src="@Model.ImageUrl" alt="Image of the doctor" width="550" height="400" />
+            <br />
+            <br />
+            @if (User.IsInRole("Patient"))
+            {
+                <button class="btn" style="text-decoration:none;margin-left:28%">   @Html.ActionLink("Schedule an appointment", "Create", "Appointments", new { id = Model.Id }, new { id = Model.Id, @style = "text-decoration:none" }) </button>
+            }
+            <br />
+            <br />
 
-                           </div>
-                       </div>
-                 
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel-icon"><span class="glyphicon glyphicon-time">  Opening Hours</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-body">
+                    <div class="row">
+                        <div class="col-lg-7">Monday - Friday</div>
+                        <div class="col-lg-5 text-right">08:00 - 16:00</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-7">Saturday</div>
+                        <div class="col-lg-5 text-right">08:00 - 13:00</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-7">Sunday</div>
+                        <div class="col-lg-5 text-right">08:00 - 13:00</div>
+                    </div>
 
-              
-                       <div class="panel panel-body">
-                           <div class="row">
-                               <div class="col-lg-7">Monday - Friday</div>
-                               <div class="col-lg-5 text-right">08:00 - 16:00</div>
-                           </div>
-                           <div class="row">
-                               <div class="col-lg-7">Saturday</div>
-                               <div class="col-lg-5 text-right">08:00 - 13:00</div>
-                           </div>
-                           <div class="row">
-                               <div class="col-lg-7">Sunday</div>
-                               <div class="col-lg-5 text-right">08:00 - 13:00</div>
-                           </div>
-                           
-                       </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h2><b>@Html.DisplayFor(model => model.NameSurName)</b></h2>
+            <div class="col-lg-6">
+                <br />
+                <h4>
+                    <b>@Html.DisplayNameFor(model => model.Age)</b>
+                </h4>
 
-                   </div>
-               </div>
-          
-               <div class="col-lg-6">
+                <h4>
+                    @Html.DisplayFor(model => model.Age)
+                </h4>
+                <br />
+                <h4>
+                    <b>@Html.DisplayNameFor(model => model.Gender) </ b >
+                </h4>
+                <h4>
+                    @Html.DisplayFor(model => model.Gender)
+                </h4>
+                <br />
+                <h4>
+                    <b>@Html.DisplayNameFor(model => model.PhoneNumber)</b>
+                </h4>
+                <h4>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </h4>
+                </br>
+                <h4>
+                    <b>@Html.DisplayNameFor(model => model.Email)</b>
+                </h4>
+                <h4>
+                    @Html.DisplayFor(model => model.Email)
+                </h4>
+            </div>
+            <div class="col-lg-6">
+                <br />
+                <h4>
+                    <b>@Html.DisplayNameFor(model => model.Specialty)</b>
+                </h4>
+                <h4>
+                    @Html.DisplayFor(model => model.Specialty)
+                </h4>
+                </br>
+                <h4>
+                    <b> @Html.DisplayNameFor(model => model.Hospital)</b>
+                </h4>
+                <h4>
+                    @Html.DisplayFor(model => model.Hospital)
+                </h4>
+                </br>
+                <h4>
+                    <b>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </b>
+                </h4>
+                <h4>
+                    @Html.DisplayFor(model => model.Description)
+                </h4>
+            </div>
+        </div>
+    </div>
+    <p style="float:right">
 
-                   <h2><b>@Html.DisplayFor(model => model.NameSurName)</b></h2>
-
-                   <div class="col-lg-6">
-                       <br />
-                       <h4>
-                           <b>@Html.DisplayNameFor(model => model.Age)</b>
-                       </h4>
-
-
-                       <h4>
-                           @Html.DisplayFor(model => model.Age)
-                       </h4>
-                       <br />
-                       <h4>
-                           <b>@Html.DisplayNameFor(model => model.Gender) </ b >
-                       </h4>
-
-                       <h4>
-                           @Html.DisplayFor(model => model.Gender)
-                       </h4>
-                       <br />
-
-                       <h4>
-                           <b>@Html.DisplayNameFor(model => model.PhoneNumber)</b>
-                       </h4>
-
-                       <h4>
-                           @Html.DisplayFor(model => model.PhoneNumber)
-                       </h4>
-                       </br>
-                       <h4>
-                           <b>@Html.DisplayNameFor(model => model.Email)</b>
-                       </h4>
-
-                       <h4>
-                           @Html.DisplayFor(model => model.Email)
-                       </h4>
-                   </div>
-                   <div class="col-lg-6">
-                       <br />
-                       <h4>
-                           <b>@Html.DisplayNameFor(model => model.Specialty)</b>
-                       </h4>
-
-                       <h4>
-                           @Html.DisplayFor(model => model.Specialty)
-                       </h4>
-                       </br>
-                       <h4>
-                           <b> @Html.DisplayNameFor(model => model.Hospital)</b>
-                       </h4>
-
-                       <h4>
-                           @Html.DisplayFor(model => model.Hospital)
-                       </h4>
-                       </br>
-
-
-
-                       <h4>
-                           <b>
-                               @Html.DisplayNameFor(model => model.Description)
-                           </b>
-                       </h4>
-
-                       <h4>
-                           @Html.DisplayFor(model => model.Description)
-                       </h4>
-                   </div>
-               </div>
-      
-
-        
-
-        
-
-  
-</div>
-       <p style="float:right">
-         
-               @if (User.IsInRole("Administrator"))
-               {
-                   <button class="btn btn-default btn-lg">
-                       @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @style = "text-decoration:none;color:black" })
-                   </button> <span>&nbsp;&nbsp;</span>
-               }
-
-           
-               <button class="btn btn-default btn-lg">
-                   @Html.ActionLink("Back to Doctors", "Index", null, new { @style = "text-decoration:none;color:black" })
-                   </button>
-           
-                   <br />
-                   <br />
-</p>
-
+        @if (User.IsInRole("Administrator"))
+        {
+            <br />
+            <button class="btn btn-default btn-lg">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @style = "text-decoration:none;color:black" })
+            </button> <span>&nbsp;&nbsp;</span>
+        }
+        <br />
+        <br />
+    </p>
 
 </div>

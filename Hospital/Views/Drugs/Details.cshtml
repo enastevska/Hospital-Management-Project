@@ -1,14 +1,9 @@
 ﻿@model Hospital.Models.Drug
-
 <body style="background-image:url(../../Images/aspirina.jpg); background-repeat:no-repeat; background-size: cover;background-position: center;">
     <br />
-
     <div>
         <div class="row">
-
-
             <div class="col-lg-10">
-
                 <h1 style="margin-left:50%">
                     <b>
                         @Html.DisplayFor(model => model.Name)
@@ -17,12 +12,10 @@
                 <br />
                 <br />
                 <div class="col-lg-3 col-lg-offset-3" style="font-size:25px">
-
                     <h3>
                         <i class="glyphicon glyphicon-barcode"> </i>
                         <b>@Html.DisplayNameFor(model => model.GenericName)</b></i>
                     </h3>
-
 
                     <h3>
                         @Html.DisplayFor(model => model.GenericName)
@@ -33,23 +26,16 @@
                         <b>@Html.DisplayNameFor(model => model.Producer)</b></i>
                     </h3>
 
-
                     <h3>
                         @Html.DisplayFor(model => model.Producer)
                     </h3>
                     <br />
-
-
-
-
                 </div>
                 <div class="col-lg-3 col-lg-offset-3">
-
                     <h3>
-                        <i class="fa fa-list" > </i>
+                        <i class="fa fa-list"> </i>
                         <b>@Html.DisplayNameFor(model => model.Indications)</b></i>
                     </h3>
-
 
                     <h3>
                         @Html.DisplayFor(model => model.Indications)
@@ -60,18 +46,14 @@
                         <b>@Html.DisplayNameFor(model => model.Usage)</b></i>
                     </h3>
 
-
                     <h3>
                         @Html.DisplayFor(model => model.Usage)
                     </h3>
                     <br />
 
 
-
-
                 </div>
             </div>
-
         </div>
         <br />
         <br />
@@ -82,13 +64,6 @@
                     @Html.ActionLink("Edit info about this drug", "Edit", new { id = Model.Id, @style = "text-decoration:none" }, new { id = Model.Id, @style = "text-decoration:none" })
                 </button>
             }
-            @if (User.IsInRole("Administrator") )
-            {
-                <button class="btn btn-default btn-md">
-                    @Html.ActionLink("Back to Drugs", "Index", new { id = Model.Id, @style = "text-decoration:none" }, new { id = Model.Id, @style = "text-decoration:none" })
-                </button>
-            }
         </p>
     </div>
-
 </body>

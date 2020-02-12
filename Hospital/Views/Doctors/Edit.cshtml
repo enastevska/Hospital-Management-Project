@@ -46,10 +46,6 @@
                             @Html.RadioButtonFor(model => model.Gender, "Female", new { @style = "width:20px;height:20px" })
                             Female
                         </p>
-
-
-
-
                        
                         @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                     </div>
@@ -112,11 +108,8 @@
         </div>
     }
 
-    <div>
-        <button class="btn btn-default btn-lg">  @Html.ActionLink("Back to Doctors", "Index", null,new { @style = "text-decoration:none;color:black" })</button>
     <br />
-        <br />
-    </div>
+    <br />
     </body>
 
     @section Scripts {

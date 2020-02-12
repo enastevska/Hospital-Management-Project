@@ -7,13 +7,13 @@ namespace Hospital.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class nova3 : IMigrationMetadata
+    public sealed partial class changedRegex : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(nova3));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(changedRegex));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906221457201_nova3"; }
+            get { return "202002121715511_changedRegex"; }
         }
         
         string IMigrationMetadata.Source

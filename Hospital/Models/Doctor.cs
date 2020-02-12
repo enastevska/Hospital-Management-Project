@@ -21,7 +21,7 @@ namespace Hospital.Models
 
         public string Gender { get; set; }
         [Required(ErrorMessage = "Please enter doctor's phone number")]
-        [RegularExpression(@"(\+389){1}\s(2\s\d{4}\s\d{3})|(\+389\s7[0125678]\s\d{3}\s\d{3})", ErrorMessage = "The phone number is not valid. Ex: +389 70 234 345 / +389 2 456 321")]
+        [RegularExpression(@"(\+48\s\d{3}\s\d{3}\s\d{3})", ErrorMessage = "The phone number is not valid. Ex: +48 111 111 111")]
         [Display(Name="Phone Number")]
         public string PhoneNumber { get; set; }
         [Required(ErrorMessage = "Please enter doctor's email")]

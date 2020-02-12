@@ -27,7 +27,7 @@ namespace Hospital.Controllers
         // GET: Appointments
         public ActionResult Index()
         {
-            var appointments = db.Appointments.Include(a => a.Doctor).Include(a => a.Patient);
+            var appointments = db.Appointments.Include(a => a.Doctor).Include(a => a.Patient); 
            
             if (User.IsInRole("Patient"))
             {
@@ -37,13 +37,7 @@ namespace Hospital.Controllers
                 var patient = db.Patients.Single(user => user.Email == current.Email);
 
 
-               
-                //   appointments = db.Appointments.Include(a => a.Doctor).Include(a => a.Patient).FirstOrDefault(x => x.PatientId == patient.Id);
-
                 appointments = from appointment in db.Appointments.Include(a => a.Doctor).Include(a => a.Patient) where patient.Id == appointment.PatientId select appointment;
-
-                //  appointments = db.Appointments.FirstOrDefault(x => x.PatientId == patient.Id);
-
 
             }
 

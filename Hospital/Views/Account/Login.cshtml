@@ -10,7 +10,7 @@
     <h2 style="margin-left:42%">@ViewBag.Title</h2>
     <div class="row">
         <div class="col-md-8">
-            <section id="loginForm" style="margin-left:40%" class="glyphicon-log-in">
+            <section id="loginForm" style="margin-left:40%">
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
